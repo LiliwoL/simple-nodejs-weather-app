@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Test</title>
+    <title>Node.js WebApp</title>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
   </head>
@@ -10,8 +10,8 @@
     <div class="container">
       <fieldset>
         <form action="/" method="post">
-          <input name="city" type="text" class="ghost-input" placeholder="Enter a City" required>
-          <input type="submit" class="ghost-button" value="Get Weather">
+          <input name="city" type="text" class="ghost-input" placeholder="Saisissez une ville" required>
+          <input type="submit" class="ghost-button" value="Quel temps fait il?">
         </form>
         <% if(weather !== null){ %>
           <p><%= weather %></p>
