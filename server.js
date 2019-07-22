@@ -10,10 +10,13 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs')
 
+// Réponse à une requête GET sur l'url /
 app.get('/', function (req, res) {
   res.render('index', {weather: null, error: null});
 })
 
+
+// Réponse à une requête POST sur l'url /
 app.post('/', function (req, res) {
   let city = req.body.city;
   let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
@@ -31,13 +34,19 @@ app.post('/', function (req, res) {
       // https://openweathermap.org/current#name
 
       if(weather.main == undefined){
-        res.render('index', {weather: null, error: 'Erreur... Veuillez réessayer'});
+        res.render('index', {weather: null, error: 'Erreur...' + weather.message + ' Veuillez réessayer'});
       } else {
         let weatherText = `Il fait actuellement ${weather.main.temp} °C à ${weather.name}!`;
         res.render('index', {weather: weatherText, error: null});
       }
     }
   });
+})
+
+
+// Réponse à une requête GET sur l'url /cesi
+app.get('/cesi', function (req, res) {
+  res.render('cesi');
 })
 
 app.listen(3000, function () {
